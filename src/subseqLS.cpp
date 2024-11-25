@@ -30,7 +30,7 @@ bool Swap (double** matrizAdj, Solucao &s, std::vector<std::vector<Subsequence>>
       }
    }
    
-   if(best_delta < 0){
+   if(best_delta < 0){//modify solution
       std::swap(s.sequencia[best_i], s.sequencia[best_j]);
       UpdateAllSubseq(s,subseq_matrix, matrizAdj);
       return true;
@@ -59,7 +59,7 @@ bool two_opt (double** matrizAdj, Solucao &s, std::vector<std::vector<Subsequenc
       }
    }
 
-   if(best_delta < 0){
+   if(best_delta < 0){//modify solution
       std::reverse(s.sequencia.begin()+best_i, s.sequencia.begin()+best_j+1);
       UpdateAllSubseq(s,subseq_matrix, matrizAdj);
       return true;
@@ -109,7 +109,7 @@ bool reinsertion (double** matrizAdj, Solucao &s, std::vector<std::vector<Subseq
       }
    }
     
-   if(best_delta < 0){
+   if(best_delta < 0){//modify solution
       for (int n = 0; n < choice; n++){
          if (best_i < best_j){
             s.sequencia.insert(s.sequencia.begin() + best_j+1, s.sequencia[best_i]);

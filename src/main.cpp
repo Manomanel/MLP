@@ -10,6 +10,7 @@
 #include "construcao.h"
 #include "subsequence.h"
 #include "subseqLS.h"
+#include "ILS.h"
 
 using namespace std;
 
@@ -20,18 +21,10 @@ int main(int argc, char** argv)
    data.read();
    int n = data.getDimension();
    double **matrizAdj = data.getMatrixCost();
-
-   Solucao s = criarSolucao(matrizAdj, n); //cria a solucao inicial da mesma maneira do TSP
    
-   std::vector<std::vector<Subsequence>> subseq_matrix(n+1, std::vector<Subsequence>(n+1)); // criar matriz de subsequencias
+   int resultado = ILS(matrizAdj, n);
 
-   UpdateAllSubseq (s, subseq_matrix, matrizAdj);
-
-   cout << subseq_matrix[0][n].C << "\n";
-
-   rvnd(matrizAdj, s, subseq_matrix, n);
-
-   cout << subseq_matrix[0][n].C;
+   cout << resultado;
    
    return 0;
 }

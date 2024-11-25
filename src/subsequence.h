@@ -9,5 +9,6 @@ typedef struct t_subsequence {
 
 Subsequence Concatenate(double **matrizAdj, Subsequence &sigma_1, Subsequence &sigma_2);
 void UpdateAllSubseq (Solucao &s, std::vector<std::vector<Subsequence>> &subseq_matrix, double** matrizAdj);
+void UpdateSubseq (std::vector<std::vector<Subsequence>> &subseq_matrix, double** matrizAdj, int k, int l);
 
 #endif
