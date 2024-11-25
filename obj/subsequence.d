@@ -1,0 +1,1 @@
+obj/subsequence.o: src/subsequence.cpp
