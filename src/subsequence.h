@@ -7,8 +7,8 @@ typedef struct t_subsequence {
    int first, last;
 } Subsequence;
 
-Subsequence Concatenate(double **matrizAdj, Subsequence &sigma_1, Subsequence &sigma_2);
+void Concatenate(double **matrizAdj, Subsequence &sigma_1, Subsequence &sigma_2, Subsequence &sigma);
 void UpdateAllSubseq (Solucao &s, std::vector<std::vector<Subsequence>> &subseq_matrix, double** matrizAdj);
-void UpdateSubseq (std::vector<std::vector<Subsequence>> &subseq_matrix, double** matrizAdj, int k, int l);
+void partSubseqUpdate (std::vector<std::vector<Subsequence>> &subseq_matrix, double** matrizAdj, int k, int l, int n, Solucao &s);
 
 #endif

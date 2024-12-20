@@ -19,12 +19,17 @@ int main(int argc, char** argv)
    srand(time(NULL));
    auto data = Data(argc,  argv[1]);
    data.read();
+
+   auto before = std::chrono::high_resolution_clock::now();
+
    int n = data.getDimension();
    double **matrizAdj = data.getMatrixCost();
    
-   int resultado = ILS(matrizAdj, n);
+   double resultado = ILS(matrizAdj, n);
 
-   cout << resultado;
+   auto after = std::chrono::high_resolution_clock::now();
+   cout << std::chrono::duration_cast<std::chrono::milliseconds>(after - before).count() << "\n";
+   cout << resultado << "\n";
    
    return 0;
 }
