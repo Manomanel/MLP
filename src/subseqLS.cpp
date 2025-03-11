@@ -114,7 +114,7 @@ bool reinsertion (double** matrizAdj, Solucao &s, std::vector<std::vector<Subseq
          }
       }
    }
-    
+
    if(best_delta < 0){//modify solution
       for (int n = 0; n < choice; n++){
          if (best_i < best_j){
@@ -134,8 +134,8 @@ bool reinsertion (double** matrizAdj, Solucao &s, std::vector<std::vector<Subseq
 
 void rvnd (double **matrizAdj, Solucao &s, std::vector<std::vector<Subsequence>> &subseq_matrix, int n)
 {
-   //NL = {1, 2, 3, 4, 5}
-   std::vector<int> NL = {1, 2, 3, 4, 5};
+   //NL = {1, 2, 3, 4, 5} retirei o oropt3 pq ele n tava achando melhor(talvez tenha feito errado)
+   std::vector<int> NL = {1, 2, 3, 4};
    bool improved = false;
 
    while (NL.empty() == false)
@@ -145,23 +145,29 @@ void rvnd (double **matrizAdj, Solucao &s, std::vector<std::vector<Subsequence>>
       {
       case 1:
          improved = Swap(matrizAdj, s, subseq_matrix, n);
+         //if (improved) cswap++;
          break;
       case 2:
          improved = reinsertion(matrizAdj, s, subseq_matrix, n, 1);
+         //if (improved) cr1++;
          break;
       case 3:
          improved = reinsertion(matrizAdj, s, subseq_matrix, n, 2);
+         //if (improved) cr2++;
          break;
+      //case 4:
+         //improved = reinsertion(matrizAdj, s, subseq_matrix, n, 3);
+         //if (improved) cr3++;
+         //break;
       case 4:
-         improved = reinsertion(matrizAdj, s, subseq_matrix, n, 3);
-         break;
-      case 5:
          improved = two_opt(matrizAdj, s, subseq_matrix, n);
+         //if (improved) ctwoopt++;
          break;
       }
       if (improved)
-         NL = {1, 2, 3, 4, 5};
+         NL = {1, 2, 3, 4};
       else
          NL.erase(NL.begin() + k);
    }
+   //cout << cswap << "   " << ctwoopt << "   " << cr1 << "   " << cr2 << "   " << cr3 << "\n";
 }

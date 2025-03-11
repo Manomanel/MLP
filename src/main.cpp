@@ -25,11 +25,11 @@ int main(int argc, char** argv)
    int n = data.getDimension();
    double **matrizAdj = data.getMatrixCost();
    
-   double resultado = ILS(matrizAdj, n);
+   float resultado = ILS(matrizAdj, n);
 
    auto after = std::chrono::high_resolution_clock::now();
-   cout << std::chrono::duration_cast<std::chrono::milliseconds>(after - before).count() << "\n";
-   cout << resultado << "\n";
+   cout << (std::chrono::duration_cast<std::chrono::milliseconds>(after - before).count() /10) << "\n";
+   cout << setprecision(8) << resultado << "\n";
    
    return 0;
 }

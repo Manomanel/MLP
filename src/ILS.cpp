@@ -11,11 +11,11 @@
 #include "subseqLS.h"
 #include "perturbacao.h"
 
-int ILS(double **matrizAdj, int dimensao)
+float ILS(double **matrizAdj, int dimensao)
 {
-   int maxIterIls, maxIter = 50;
-   if (dimensao >= 150){
-      maxIterIls = dimensao/2;
+   int maxIterIls, maxIter = 10;
+   if (dimensao >= 100){
+      maxIterIls = 100;
    } else {maxIterIls = dimensao;}
 
    float avarageScore = 0;
